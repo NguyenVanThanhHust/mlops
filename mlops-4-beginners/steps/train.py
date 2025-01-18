@@ -14,6 +14,7 @@ class Trainer:
         self.model_name = self.config['model']['name']
         self.model_params = self.config['model']['params']
         self.model_path = self.config['model']['store_path']
+        os.makedirs(self.model_path, exist_ok=True)
         self.pipeline = self.create_pipeline()
 
     def load_config(self):
@@ -46,7 +47,7 @@ class Trainer:
 
         return pipeline
 
-    def feature_target_separator(self, data):
+    def feature_target_seperator(self, data):
         X = data.iloc[:, :-1]
         y = data.iloc[:, -1]
         return X, y

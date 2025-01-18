@@ -25,14 +25,14 @@ def main():
 
     # Prepare and train model
     trainer = Trainer()
-    X_train, y_train = trainer.feature_target_separator(train_data)
+    X_train, y_train = trainer.feature_target_seperator(train_data)
     trainer.train_model(X_train, y_train)
     trainer.save_model()
     logging.info("Model training completed successfully")
 
     # Evaluate model
     predictor = Predictor()
-    X_test, y_test = predictor.feature_target_separator(test_data)
+    X_test, y_test = predictor.feature_target_seperator(test_data)
     accuracy, class_report, roc_auc_score = predictor.evaluate_model(X_test, y_test)
     logging.info("Model evaluation completed successfully")
     
@@ -65,14 +65,14 @@ def train_with_mlflow():
 
         # Prepare and train model
         trainer = Trainer()
-        X_train, y_train = trainer.feature_target_separator(train_data)
+        X_train, y_train = trainer.feature_target_seperator(train_data)
         trainer.train_model(X_train, y_train)
         trainer.save_model()
         logging.info("Model training completed successfully")
         
         # Evaluate model
         predictor = Predictor()
-        X_test, y_test = predictor.feature_target_separator(test_data)
+        X_test, y_test = predictor.feature_target_seperator(test_data)
         accuracy, class_report, roc_auc_score = predictor.evaluate_model(X_test, y_test)
         report = classification_report(y_test, trainer.pipeline.predict(X_test), output_dict=True)
         logging.info("Model evaluation completed successfully")
@@ -105,5 +105,5 @@ def train_with_mlflow():
         print("=====================================================\n")
         
 if __name__ == "__main__":
-    # main()
-    train_with_mlflow()
+    main()
+    # train_with_mlflow()
